@@ -1,9 +1,11 @@
 import express from "express";
 const router = express.Router();
 
-/* GET users listing. */
+/* GET products listing. */
 router.get("/", function (req, res, next) {
-  res.json({ message: "I wish we had some information to give you ☹️" });
+  res.json({
+    message: "Congratulations, you are in the right place for products! 🙂",
+  });
 });
 
 export default router;
