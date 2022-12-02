@@ -5,8 +5,6 @@ import { MongoClient } from "mongodb";
 const mongod = await MongoMemoryServer.create();
 
 const uri = mongod.getUri();
-const client = new MongoClient(uri);
-const db = client.db("productsdb");
-const products = db.collection("products");
-
-export default products;
+export const client = new MongoClient(uri);
+export const db = client.db("productsdb");
+export const products = db.collection("products");
