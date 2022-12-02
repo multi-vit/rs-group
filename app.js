@@ -17,6 +17,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// Only accept application/json content-type
+app.use("/products", function (req, res, next) {
+  const contype = req.headers["content-type"];
+  if (!contype || contype.indexOf("application/json") !== 0)
+    return res
+      .status(400)
+      .send("Sorry, we only accept application/json as content-type");
+  next();
+});
+
 app.use("/products", productsRouter);
 
 app.use(function (req, res, next) {

@@ -6,10 +6,6 @@ describe("Insert, Put and Get", () => {
     await products.deleteMany({});
   });
 
-  afterAll(async () => {
-    await client.close();
-  });
-
   test("Given a document, when called, should insert that document and be able to retrieve it", async () => {
     const mockProduct = {
       stock_number: "12345",
@@ -42,5 +38,9 @@ describe("Insert, Put and Get", () => {
     };
     const result = await products.updateOne(filter, updateProduct);
     expect(result.modifiedCount).toEqual(1);
+  });
+
+  afterAll(async () => {
+    await client.close();
   });
 });

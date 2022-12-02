@@ -12,10 +12,6 @@ describe("Create, Get (all and individual) and Update", () => {
     await products.deleteMany({});
   });
 
-  afterAll(async () => {
-    await client.close();
-  });
-
   test("Given a product, when called, addNewProduct should insert that document", async () => {
     const mockProduct = {
       stock_number: "12345",
@@ -81,5 +77,9 @@ describe("Create, Get (all and individual) and Update", () => {
     };
     const result = await updateProduct(stockNumber, productToUpdate);
     expect(result.modifiedCount).toEqual(1);
+  });
+
+  afterAll(async () => {
+    await client.close();
   });
 });
