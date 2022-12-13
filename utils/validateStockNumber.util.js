@@ -9,20 +9,14 @@ Return result of validation - Boolean
 */
 
 export default function validateStockNumber(stockNumber) {
-  if (stockNumber.length !== 10) {
-    return false;
-  } else {
-    if (/[a-z0-9]/gi.test(stockNumber)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  return /^[a-z0-9]{10}$/i.test(stockNumber);
 }
 
 // TODO Global flag searches for alphanumeric anywhere in the string, can use {} to look for specific amount
 // Use that to check length 10
 
 console.log(validateStockNumber("1234567890"));
+console.log(validateStockNumber("abcde12345"));
 console.log(validateStockNumber("1"));
 console.log(validateStockNumber("123456789!"));
+console.log(validateStockNumber("abcde123456789"));
